@@ -1,3 +1,3 @@
 module.exports = {
-    mongoUri : "mongodb+srv://audrilinares:<linares92>@nodeforum.6hlms.mongodb.net/test"
+    mongoUri: "mongodb+srv://audrianalinares:sept92@nodeforum.6hlms.mongodb.net/Java?retryWrites=true&w=majority"
 }
