@@ -1,26 +1,85 @@
+
+
 import React, {useState, useEffect} from 'react';
-import AuthContext from "./contexts/AuthContext";
+import AuthContext from "./Contexts/AuthContext";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import './App.css';
+import axios from "axios";
+import Navbar from "./Components/Navbar";
+import auth from "./pages/auth/auth";
+
+import Home from "./Pages/Home";
+import Register from "./Pages/Auth/Register";
+import CreateCategory from "./Pages/Category/CreateCategory";
+import BrowseCategories from "./Pages/Category/BrowseCategories";
+import ShowCategory from "./Pages/Category/ShowCategory";
+import CreateForum from "./Pages/Forum/CreateForum";
+import ShowForum from "./Pages/Forum/ShowForum";
+import CreateThread from "./Pages/Thread/CreateThread";
+import ShowThread from "./Pages/Thread/ShowThread";
 
 function App() {
-  const [user, setUser] = useState(initialState: null);
-  const [isInitiated, setIsInitiated] = useState(initialState: false);
+  const [user, setUser] = useState(null);
+  const [isInitiated, setIsInitiated] = useState(false);
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async () => {
+    const token = localStorage.getItem("token");
+    const response = await axios.get('/api/auth/init', {params: {token}});
+    const {user} = response.data;
+    setUser(user);
+    setIsInitiated(true);
+  };
 
   const handleLogout = () => {
-    setUser(value:null);
-    localStorage:setItem("token",null);
+    setUser(null);
+    localStorage.setItem("token", null);
   };
 
   return (
-    <div>
-      {isInitiated && (
-          <AuthContext.Provider value={{user, setUser, handleLogout}}>
-
-          </AuthContext.Provider>
-      )}
-
-    </div>
+      <div>
+        {isInitiated && (
+            <AuthContext.Provider value={{user, setUser, handleLogout}}>
+              <Router>
+                <Navbar />
+                <Switch>
+                  <Route path="/" exact>
+                    <Home/>
+                  </Route>
+                  <Route path="/auth/auth">
+                    {!user ? <auth/> : <Redirect to="/"/>}
+                  </Route>
+                  <Route path="/auth/register">
+                    {!user ? <Register/> : <Redirect to="/"/>}
+                  </Route>
+                  <Route path="/category/create">
+                    {user ? <CreateCategory/> : <Redirect to="/auth/login"/>}
+                  </Route>
+                  <Route path="/category/:id">
+                    <ShowCategory/>
+                  </Route>
+                  <Route path="/category">
+                    <BrowseCategories/>
+                  </Route>
+                  <Route path="/forum/create/:id">
+                    {user ? <CreateForum/> : <Redirect to="/auth/login"/>}
+                  </Route>
+                  <Route path="/forum/:id">
+                    <ShowForum/>
+                  </Route>
+                  <Route path="/thread/create/:id">
+                    {user ? <CreateThread/> : <Redirect to="/auth/login"/>}
+                  </Route>
+                  <Route path="/thread/:id">
+                    <ShowThread/>
+                  </Route>
+                </Switch>
+              </Router>
+            </AuthContext.Provider>
+        )}
+      </div>
   );
 }
 
