@@ -5,7 +5,7 @@ import AuthContext from "./Contexts/AuthContext";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Components/Navbar";
-import auth from "./pages/auth/auth";
+import login from "./pages/auth/login";
 
 import Home from "./Pages/Home";
 import Register from "./Pages/Auth/Register";
@@ -48,8 +48,8 @@ function App() {
                   <Route path="/" exact>
                     <Home/>
                   </Route>
-                  <Route path="/auth/auth">
-                    {!user ? <auth/> : <Redirect to="/"/>}
+                  <Route path="/auth/login">
+                    {!user ? <login/> : <Redirect to="/"/>}
                   </Route>
                   <Route path="/auth/register">
                     {!user ? <Register/> : <Redirect to="/"/>}
