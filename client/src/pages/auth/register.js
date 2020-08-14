@@ -1,5 +1,4 @@
-import React, {useState, useContext} from 'react';
-import AuthContext from "../../Contexts/AuthContext";
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,9 +7,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import validator from "validator";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
-
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -32,40 +30,49 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SignIn() {
-    const history = useHistory();
-    const {setUser} = useContext(AuthContext);
+export default function Register() {
     const classes = useStyles();
+
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState(null);
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState(null);
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
-    const handleOnSubmit = async e => {
-        e.preventDefault();
+    const handleOnSubmit = async event => {
+        event.preventDefault();
         setEmailError(null);
         setPasswordError(null);
+        let errors = 0;
+
+        if (!validator.isEmail(email))
+        {
+            setEmailError("Email must be in correct format");
+            errors++;
+        }
+
+        if (password !== passwordConfirmation) {
+            setPasswordError("Passwords don't match.");
+            errors++;
+        }
+
+        if (errors) return;
 
         const data = {
+            name,
             email,
             password
         };
 
         try {
-            const response = await axios.post('/api/auth/login', data);
-            const {token, user} = response.data;
-            localStorage.setItem("token", token);
-            setUser(user);
-            history.push('/');
+            await axios.post("/api/auth/register", data);
         } catch (e) {
             const message = e.response.data.message;
-            if (message === 'user_not_found') {
-                setEmailError('No users with this email were found');
-            } else if (message === 'wrong_password') {
-                setPasswordError('Wrong password')
+            if (message === "email_exists") {
+                setEmailError("User with this email already exists");
             }
         }
-
     };
 
     return (
@@ -76,14 +83,21 @@ export default function SignIn() {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Register
                 </Typography>
                 <form className={classes.form} onSubmit={handleOnSubmit}>
                     <TextField
                         required
                         fullWidth
-                        label="Email Address"
+                        label="Name"
                         autoFocus
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                    />
+                    <TextField
+                        required
+                        fullWidth
+                        label="Email Address"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         error={!!emailError}
@@ -98,6 +112,14 @@ export default function SignIn() {
                         onChange={e => setPassword(e.target.value)}
                         error={!!passwordError}
                         helperText={passwordError}
+                    />
+                    <TextField
+                        required
+                        fullWidth
+                        label="Password Confirmation"
+                        type="password"
+                        value={passwordConfirmation}
+                        onChange={e => setPasswordConfirmation(e.target.value)}
                     />
                     <Button
                         type="submit"
