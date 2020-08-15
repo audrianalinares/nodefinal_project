@@ -1,18 +1,22 @@
-const mongoose = require("mongoose"), bcrypt = require('bcryptjs'), Schema = mongoose.Schema, UserSchema = new Schema({
+const mongoose = require("mongoose");
+const bcrypt = require('bcryptjs');
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
     name: String,
     email: String,
     password: String,
-    "creatAt": Date
+    createdAt: Date
 });
 
-UserSchema.pre(name:// noinspection BadExpressionStatementJS
-'save', async next => {
+UserSchema.pre('save', async function (next)  {
     const user = this;
-    if (!user.isModified("password")) return next();
+    if (!user.isModified('password')) return next();
 
-    await bcrypt.hash(user.password, 10);
+    const hash = await bcrypt.hash(user.password, 10);
+    user.password = hash;
     next();
 
-};
-mongoose.model(name;
-:'user', UserSchema)
+});
+const User = mongoose.model('User', UserSchema);
+module.exports = User;
