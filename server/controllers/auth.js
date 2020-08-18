@@ -37,6 +37,7 @@ router.post('/register', async(req, res) => {
     await newUser.save();
     res.sendStatus(201);
 });
+
 router.post('/login',async (req,res) =>{
     const user = await User.findOne({email: req.body.email});
     if (!user) {
@@ -45,6 +46,7 @@ router.post('/login',async (req,res) =>{
         });
         return;
     }
+
     const isEqual = await bcrypt.compare(req.body.password, user.password);
     if (!isEqual) {
         res.status(401).send({
@@ -59,5 +61,6 @@ router.post('/login',async (req,res) =>{
         user
     })
 });
+
 
 module.exports= router;
