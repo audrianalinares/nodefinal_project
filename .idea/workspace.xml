@@ -20,11 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf91f82-ceae-4550-a575-5244c14f231a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Category/showCategory.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Forum/createForum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Forum/showForum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Threads/CreateThread.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Threads/ShowThread.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Category/BrowseCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Category/BrowseCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/contexts/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/contexts/AuthContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Forum/createForum.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Forum/CreateForum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Forum/showForum.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Forum/ShowForum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/auth/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/auth/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/Category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/nodefinal_project.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/NodeFinalProject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597203011431</updated>
-      <workItem from="1597203014217" duration="41212000" />
+      <workItem from="1597203014217" duration="45147000" />
     </task>
     <servers />
   </component>
@@ -104,5 +116,9 @@
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1597292332563" />
     <state x="458" y="222" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1597293309093" />
+    <state x="321" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1597726055519">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="321" y="224" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597726055519" />
   </component>
 </project>

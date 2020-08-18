@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "nodefinal_project.js",
+  "main": "NodeFinalProject.js",
   "scripts": {
-    "start": "node nodefinal_project.js",
-    "dev": "nodemon nodefinal_project.js"
+    "start": "node NodeFinalProject.js",
+    "dev": "nodemon NodeFinalProject.js"
   },
   "keywords": [],
   "author": "",

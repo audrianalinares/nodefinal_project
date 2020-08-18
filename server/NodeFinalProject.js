@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 
-const config = require('./config');
+const config = require('./Config');
 
 mongoose.connect(config.mongoUri, {
     useNewUrlParser: true,
@@ -29,5 +29,5 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, "..", "client/build/index.html"));
 });
 
-const PORT = 5005;
+const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

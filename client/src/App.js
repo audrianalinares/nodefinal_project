@@ -1,21 +1,19 @@
-
-
 import React, {useState, useEffect} from 'react';
-import AuthContext from "./Contexts/AuthContext";
+import AuthContext from "./contexts/AuthContext";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import axios from "axios";
-import Navbar from "./Components/Navbar";
-import login from "./pages/auth/login";
+import Navbar from "./components/Navbar"
+import login from "./pages/auth/Login";
 
-import Home from "./Pages/Home";
-import Register from "./Pages/Auth/Register";
-import CreateCategory from "./Pages/Category/CreateCategory";
-import BrowseCategories from "./Pages/Category/BrowseCategories";
-import ShowCategory from "./Pages/Category/ShowCategory";
-import CreateForum from "./Pages/Forum/CreateForum";
-import ShowForum from "./Pages/Forum/ShowForum";
-import CreateThread from "./Pages/Thread/CreateThread";
-import ShowThread from "./Pages/Thread/ShowThread";
+import Home from "./pages/Home";
+import Register from "./pages/auth/Register";
+import CreateCategory from "./pages/Category/CreateCategory";
+import BrowseCategory from "./pages/Category/BrowseCategory";
+import ShowCategory from "./pages/Category/showCategory"
+import CreateForum from "./pages/Forum/CreateForum";
+import ShowForum from "./pages/Forum/ShowForum";
+import CreateThread from "./pages/Threads/ShowThread";
+import ShowThread from "./pages/Threads/ShowThread"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -61,7 +59,7 @@ function App() {
                     <ShowCategory/>
                   </Route>
                   <Route path="/category">
-                    <BrowseCategories/>
+                    <BrowseCategory/>
                   </Route>
                   <Route path="/forum/create/:id">
                     {user ? <CreateForum/> : <Redirect to="/auth/login"/>}
