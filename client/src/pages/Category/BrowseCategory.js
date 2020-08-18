@@ -7,7 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 
-export default function BrowseCatefories() {
+export default function BrowseCategories() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -35,3 +35,4 @@ export default function BrowseCatefories() {
                 ))}
             </List>
         </div>
+    )};
